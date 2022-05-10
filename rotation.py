@@ -18,23 +18,23 @@ def plateau_vide(r):
     return plateau
 
 
-def plateau(r):
+def plateau(r,p):
     Plateau = plateau_vide(r)
     for y in range(len(Plateau)):
-        if y >= 6:
+        if y >= ((r/2)+1):
             if y % 2 == 0:
                 x = 1
             else :
                 x = 0
             for i in range(x,len(Plateau[1]),2):
-                Plateau[y][i] = 1
-        elif y < 4:
+                Plateau[y][i] = 1+p
+        elif y < ((r/2)-1):
             if y % 2 == 0:
                 x = 1
             else :
                 x = 0
             for i in range(x,len(Plateau[1]),2):
-                Plateau[y][i] = 2
+                Plateau[y][i] = 2+p
         else:
             for i in range(len(Plateau[1])):
                 Plateau[y][i] = 0
@@ -93,5 +93,4 @@ def analyse_jeu(pionx,piony,matrice):
 analyse des possibilités à la fois de déplacements et de gain de pièces
 """
 
-
-    
+#print(plateau(5,))
