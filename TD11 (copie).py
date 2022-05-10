@@ -24,7 +24,7 @@ def comp(t, tour):
             j2 = [j-1,j+1]
             if t[i][j] != 0 and t[i][j] % 2 == tour:  # vérifie que le pion appartient au joueur dont c'est le tour
                 if t[i][j] < 3:  # mouvement pour un pion classique
-                    for e in j2:
+                    for e in j2: # e est la colonne
                         if (e>=0 and e<l):
                             if(i2>=0 and i2<l):
                                 if t[i2][e] == 0:
@@ -42,9 +42,9 @@ def comp(t, tour):
                 else:            # mouvement pour une dame
                     for g in range(-1,2,2):
                         for k in range(-1,2,2):
-                            f = 0
-                            e = j
-                            i2 = i
+                            f = 0      # casser la boucle
+                            e = j      # e est la colonne
+                            i2 = i     # i2 est la ligne
                             while f == 0:
                                 i2 += g
                                 e += k
@@ -55,7 +55,7 @@ def comp(t, tour):
                                             if not([i,j] in p_pouvoir):
                                                 p_pouvoir.append([i,j])
                                         elif t[i2][e] % 2 != tour:
-                                            h = e + k
+                                            h = e + k # regarder la case qui suit dans la diagonale
                                             if (i2+g>=0 and i2+g<l):
                                                 if (h>=0 and h<l):
                                                     if t[i2+g][h] == 0:
@@ -87,7 +87,7 @@ def comp(t, tour):
             d = "too bad ;)"
             pions = "fin de partie"
     else:        # prise multiples
-        if devoir != [] and bouge in p_devoir:
+        if devoir != [] and bouge in p_devoir: 
             d = devoir.copy()
             pions = [bouge]
         else:
@@ -98,17 +98,17 @@ def comp(t, tour):
 
 
 def jouer(t, tour):
-    global c
-    global bouge
-    global gg
-    global p1m
-    global p2m
+    global c    # definit les coups multiples
+    global bouge # pion avec lequel on vient de manger
+    global gg  # gg termine la partie
+    global p1m # pion1 mangé
+    global p2m # pion2 mangé
     x,y = [-1,-1]
     xd, yd = [-1, -1]
     coups, mobile = comp(t, tour) 
     print(coups,mobile)
     if coups == "too bad ;)":
-        print(f'la partie est finie, le joeur {tour+1} a gagné')
+        print(f'la partie est finie, le joueur {tour+1} a gagné')
         gg += 1
     elif coups == "np":   # reset des coups multiples
         c = 0
@@ -148,7 +148,7 @@ def jouer(t, tour):
                     print("joueur 1 a gagné")
 
 
-damier = plateau(10)
+damier = plateau(8,0)
 
 p1m = 0
 p2m = 0
