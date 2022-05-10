@@ -9,7 +9,7 @@ def matrices(n):  # j'ai gardé juste pour les tests à virer
             h.append(0)
         t.append(h)
     return t
-
+arthur
 
 def comp(t, tour):
     global bouge  # cette variable est pour les prises multiples
